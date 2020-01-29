@@ -12,15 +12,7 @@
     </head>
     <body>
         <div class="app">
-            <div class="heading">
-                <h1>Current habits</h1>
-            </div>
-            <div class="habits">
-                <ul>
-                    <habit-list>
-                    </habit-list>
-                </ul>
-            </div>
+        
         </div>
 
         <script src="/js/app.js"></script>

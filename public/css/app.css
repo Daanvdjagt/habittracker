@@ -1,0 +1,33 @@
+html {
+  background-color: #222129;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 14px;
+  color: white;
+}
+
+h1 {
+  font-size: 32px;
+  color: white;
+}
+
+.habits {
+  -webkit-box-pack: left;
+          justify-content: left;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-align: left;
+          align-items: left;
+  padding: 20px;
+}
+
+.app {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 6fr;
+  grid-column-gap: 1px;
+}
+

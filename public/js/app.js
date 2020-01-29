@@ -14399,16 +14399,27 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_1__);
 
 
-new vue__WEBPACK_IMPORTED_MODULE_1___default.a({
-  el: "#app",
-  data: {
-    message: "Hello world"
+vue__WEBPACK_IMPORTED_MODULE_1___default.a.component("habit", {
+  template: "\n   <div class=\"card\">\n  <div class=\"card-content\">\n    <p class=\"title\">\n      <slot name=\"title\"></slot>\n    </p>\n    <p>\n      <slot name=\"subtitle\"></slot>\n    </p>\n    <p class=\"subtitle\">\n        <slot name=\"value\"></slot>\n    </p>\n  </div>\n  <footer class=\"card-footer\">\n    <p class=\"card-footer-item\">\n      <span>\n       Add new <a href=\"#\">progress</a>\n      </span>\n    </p>\n    <p class=\"card-footer-item\">\n      <span>\n       Remove this <a href=\"#\">Habit</a>\n      </span>\n    </p>\n  </footer>\n</div>\n    "
+});
+vue__WEBPACK_IMPORTED_MODULE_1___default.a.component("habit-list", {
+  template: "\n    <div>\n        <habit v-for=\"habit in habits\">\n            <p slot=\"title\">{{habit.title}}</p>\n            <p slot=\"subtitle\">{{habit.subtitle}}</p>\n            <p slot= \"value\">{{habit.currentValue}}</p>\n        </habit>\n    </div>\n    ",
+  data: function data() {
+    return {
+      habits: []
+    };
   },
   mounted: function mounted() {
-    axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/skills").then(function (response) {
-      return console.log(response.data);
+    var _this = this;
+
+    axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/habits").then(function (response) {
+      return _this.habits = response.data;
     });
   }
+});
+new vue__WEBPACK_IMPORTED_MODULE_1___default.a({
+  el: ".app",
+  data: {}
 });
 
 /***/ }),
