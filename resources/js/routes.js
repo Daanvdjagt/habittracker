@@ -15,5 +15,6 @@ let routes = [
 ];
 
 export default new VueRouter({
+    linkExactActiveClass: 'is-active',
     routes
 });
