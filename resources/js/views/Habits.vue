@@ -6,10 +6,12 @@
             <p slot="value">{{habit.currentValue}} {{habit.valueType}} today</p>
         </tile>
     </div>
+
 </template>
 
 <script>
 import Tile from "../components/Tile";
+
 
 export default {
     data: function() {
@@ -23,7 +25,7 @@ export default {
             .then(response => (this.habits = response.data));
     },
     components: {
-        Tile
+        Tile,
     }
 };
 </script>

@@ -25,20 +25,55 @@ $control-border-width: 2px;
 $input-border-color: transparent;
 $input-shadow: none;
 
+$info: $purple;
+
+.message {
+    padding: 16px;
+}
 
 .wrapper {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
 }
 
-@media(max-width: 900px) {
+@media (max-width: 900px) {
     .wrapper {
-        grid-template-columns: 1fr
+        grid-template-columns: 1fr;
     }
 }
 
+.socials {
+    display: grid;
+    grid-template-areas:
+        "leftsocials rightsocials"
+        "leftsocials rightsocials";
+}
+
+.socials-left {
+    grid-area: leftsocials;
+}
+
+.socials-right {
+    grid-area: rightsocials;
+}
+
+.team-wrapper {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+@media (max-width: 900px) {
+    .team-wrapper {
+        grid-template-columns: 1fr;
+    }
+}
+
+.card-wrapper {
+    padding: 16px;
+}
+
+.card {
+    border-radius: 16px;
+}
 
 @import "./node_modules/bulma/bulma.sass";
-
-
-
