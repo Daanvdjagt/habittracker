@@ -8,5 +8,9 @@
         <router-link tag="li" to="/habits">
             <a>Habits</a>
         </router-link>
+
+        <router-link tag="li" to="/team">
+            <a>Team</a>
+        </router-link>
     </ul>
   </nav>
