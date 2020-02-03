@@ -32,7 +32,6 @@
                     @include('layouts.nav') 
                 </nav>
             </div>
-
             <router-view></router-view>
         
             <!-- Hero footer: will stick at the bottom -->
