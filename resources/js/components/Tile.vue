@@ -3,7 +3,7 @@
         <div class="tile  is-parent">
             <article class="tile is-child box">
                 <p class="title"><slot name="title"></slot></p>
-                <p class="subtitle"><slot name="subtitle"></slot></p>
+                <p class="subtitle is-6"><slot name="subtitle"></slot></p>
                 <div class="content">
                     <p class="subtitle"><slot name="value"></slot></p>
                 </div>

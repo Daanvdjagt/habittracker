@@ -14,9 +14,17 @@
                         <slot name="modal-question"></slot>
                     </p>
                     <form>
-                        <input class="input is-primary" type="number" />
+                        <input
+                            class="input is-primary"
+                            type="number"
+                            ref="valueField"
+                        />
                         <div id="modal-span">
-                            <span><a>Add progress</a></span>
+                            <span
+                                ><a @click="sendAndClose()"
+                                    >Add progress</a
+                                ></span
+                            >
                         </div>
                     </form>
                 </div>
@@ -31,7 +39,13 @@
 </template>
 
 <script>
-export default {};
+export default {
+    methods: {
+        sendAndClose() {
+            this.$emit("close", this.$refs.valueField.value);
+        }
+    }
+};
 </script>
 
 <style></style>

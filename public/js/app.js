@@ -1940,7 +1940,21 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-/* harmony default export */ __webpack_exports__["default"] = ({});
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  methods: {
+    sendAndClose: function sendAndClose() {
+      this.$emit("close", this.$refs.valueField.value);
+    }
+  }
+});
 
 /***/ }),
 
@@ -2065,11 +2079,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({});
 
 /***/ }),
@@ -2127,7 +2136,6 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     updateSelectedHabit: function updateSelectedHabit(habit) {
       this.selectedHabit = habit;
-      console.log(this.selectedHabit);
     },
     currentHabitValue: function currentHabitValue(habit) {
       return "You have " + habit.currentValue + " " + habit.valueType + " today.";
@@ -3394,7 +3402,29 @@ var render = function() {
             2
           ),
           _vm._v(" "),
-          _vm._m(0)
+          _c("form", [
+            _c("input", {
+              ref: "valueField",
+              staticClass: "input is-primary",
+              attrs: { type: "number" }
+            }),
+            _vm._v(" "),
+            _c("div", { attrs: { id: "modal-span" } }, [
+              _c("span", [
+                _c(
+                  "a",
+                  {
+                    on: {
+                      click: function($event) {
+                        return _vm.sendAndClose()
+                      }
+                    }
+                  },
+                  [_vm._v("Add progress")]
+                )
+              ])
+            ])
+          ])
         ])
       ])
     ]),
@@ -3410,23 +3440,7 @@ var render = function() {
     })
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("form", [
-      _c("input", {
-        staticClass: "input is-primary",
-        attrs: { type: "number" }
-      }),
-      _vm._v(" "),
-      _c("div", { attrs: { id: "modal-span" } }, [
-        _c("span", [_c("a", [_vm._v("Add progress")])])
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -3518,7 +3532,7 @@ var render = function() {
       _c("article", { staticClass: "tile is-child box" }, [
         _c("p", { staticClass: "title" }, [_vm._t("title")], 2),
         _vm._v(" "),
-        _c("p", { staticClass: "subtitle" }, [_vm._t("subtitle")], 2),
+        _c("p", { staticClass: "subtitle is-6" }, [_vm._t("subtitle")], 2),
         _vm._v(" "),
         _c("div", { staticClass: "content" }, [
           _c("p", { staticClass: "subtitle" }, [_vm._t("value")], 2)
@@ -3585,9 +3599,11 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", [
       _c("div", { staticClass: "tile is-parent" }, [
-        _c("div", { staticClass: "tile is-vertical is-4" }, [
+        _c("div", { staticClass: "tile is-vertical is-6" }, [
           _c("article", { staticClass: "tile is-child notification is-info" }, [
-            _c("p", { staticClass: "title" }, [_vm._v("People suck!")]),
+            _c("p", { staticClass: "title" }, [
+              _vm._v("People suck at this one thing.")
+            ]),
             _vm._v(" "),
             _c("p", { staticClass: "subtitle" }, [
               _vm._v(
@@ -3597,15 +3613,6 @@ var staticRenderFns = [
               _vm._v(
                 "\n                    it's not like they can't think of good habits they WOULD\n                    like to keep themselves to, it's just the actually\n                    following through that keeps them from progressing.\n                "
               )
-            ]),
-            _vm._v(" "),
-            _c("figure", { staticClass: "image is-4by3" }, [
-              _c("img", {
-                attrs: {
-                  src:
-                    "https://images.pexels.com/photos/193821/pexels-photo-193821.jpeg?cs=srgb&dl=person-doing-thumbs-up-193821.jpg&fm=jpg"
-                }
-              })
             ])
           ])
         ])

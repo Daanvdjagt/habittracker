@@ -42,7 +42,6 @@ export default {
     methods: {
         updateSelectedHabit(habit) {
             this.selectedHabit = habit;
-            console.log(this.selectedHabit);
         },
 
         currentHabitValue(habit) {

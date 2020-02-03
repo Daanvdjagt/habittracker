@@ -55,7 +55,7 @@ Route::get('/habits', function () {
             'currentValue'=>'6',
             'recordValue'=>'8',
             'type' => 'sleep',
-            'valueType' => 'hours slept tonight'
+            'valueType' => 'hours slept'
 
         ],
         [
@@ -125,4 +125,3 @@ Route::get('/team', function (){
         ]
     ]);
 });
-
