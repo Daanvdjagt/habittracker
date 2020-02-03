@@ -2,6 +2,7 @@
     <div class="team-wrapper">
         <profile v-for="person in people" :key="person.id">
             <p slot="name">{{ person.name }} {{ person.surname }}</p>
+            <img :src="person.image_url" slot="image" />
             <p slot="function">{{ person.function }}</p>
             <p slot="twitter">{{ person.socials.twitter }}</p>
             <p slot="instagram">{{ person.socials.instagram }}</p>
@@ -27,12 +28,6 @@ export default {
     },
     components: {
         Profile
-    },
-    computed : {
-        getImgUrl(person) {
-            var image = person.img_url
-            return image
-        }
     }
 };
 </script>

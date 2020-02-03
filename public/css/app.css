@@ -45,6 +45,14 @@
   border-radius: 16px;
 }
 
+img {
+  border-radius: 8px;
+}
+
+.content {
+  padding-top: 32px;
+}
+
 /*! bulma.io v0.8.0 | MIT License | github.com/jgthms/bulma */
 
 @-webkit-keyframes spinAround {

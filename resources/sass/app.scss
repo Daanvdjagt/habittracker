@@ -76,4 +76,12 @@ $info: $purple;
     border-radius: 16px;
 }
 
+img {
+    border-radius: 8px;
+}
+
+.content {
+    padding-top: 32px;
+}
+
 @import "./node_modules/bulma/bulma.sass";
