@@ -19033,15 +19033,9 @@ __webpack_require__.r(__webpack_exports__);
   !*** ./resources/js/event-bus.js ***!
   \***********************************/
 /*! exports provided: EventBus */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports) {
 
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EventBus", function() { return EventBus; });
-/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
-/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
-
-var EventBus = new vue__WEBPACK_IMPORTED_MODULE_0___default.a();
+throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nError: ENOENT: no such file or directory, open '/home/daan/dev/vuejs_playground/resources/js/event-bus.js'");
 
 /***/ }),
 
