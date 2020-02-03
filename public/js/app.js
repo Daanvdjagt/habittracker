@@ -1931,6 +1931,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({});
 
 /***/ }),
@@ -1994,7 +2003,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _event_bus_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../event-bus.js */ "./resources/js/event-bus.js");
 //
 //
 //
@@ -2020,7 +2028,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-
 /* harmony default export */ __webpack_exports__["default"] = ({
   methods: {
     emitsGlobalModalOpen: function emitsGlobalModalOpen() {
@@ -2095,6 +2102,18 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2109,6 +2128,9 @@ __webpack_require__.r(__webpack_exports__);
     updateSelectedHabit: function updateSelectedHabit(habit) {
       this.selectedHabit = habit;
       console.log(this.selectedHabit);
+    },
+    currentHabitValue: function currentHabitValue(habit) {
+      return "You have " + habit.currentValue + " " + habit.valueType + " today.";
     }
   },
   mounted: function mounted() {
@@ -3351,7 +3373,31 @@ var render = function() {
   return _c("div", { staticClass: "modal is-active" }, [
     _c("div", { staticClass: "modal-background" }),
     _vm._v(" "),
-    _vm._m(0),
+    _c("div", { staticClass: "modal-content" }, [
+      _c("div", { staticClass: "box" }, [
+        _c("div", { staticClass: "modal-header" }, [
+          _c("p", { staticClass: "title" }, [_vm._t("modal-title")], 2),
+          _vm._v(" "),
+          _c(
+            "p",
+            { staticClass: "subtitle is-4" },
+            [_vm._t("modal-subtitle")],
+            2
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "modal-form" }, [
+          _c(
+            "p",
+            { staticClass: "subtitle is-6" },
+            [_vm._t("modal-question")],
+            2
+          ),
+          _vm._v(" "),
+          _vm._m(0)
+        ])
+      ])
+    ]),
     _vm._v(" "),
     _c("button", {
       staticClass: "modal-close is-large",
@@ -3369,17 +3415,14 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "modal-content" }, [
-      _c("div", { staticClass: "box" }, [
-        _c("p", { staticClass: "title" }, [
-          _vm._v("Lorem ipsum dolor sit amet")
-        ]),
-        _vm._v(" "),
-        _c("p", { staticClass: "subtitle" }, [
-          _vm._v(
-            "\n                Lorem ipsum dolor sit amet consectetur adipisicing elit.\n                Impedit, dolorum ducimus, recusandae magni quam eligendi\n                suscipit ullam laboriosam voluptatibus totam architecto\n                nostrum vel quo soluta blanditiis quaerat, explicabo enim\n                illum!\n            "
-          )
-        ])
+    return _c("form", [
+      _c("input", {
+        staticClass: "input is-primary",
+        attrs: { type: "number" }
+      }),
+      _vm._v(" "),
+      _c("div", { attrs: { id: "modal-span" } }, [
+        _c("span", [_c("a", [_vm._v("Add progress")])])
       ])
     ])
   }
@@ -3618,10 +3661,8 @@ var render = function() {
             _c("p", { attrs: { slot: "value" }, slot: "value" }, [
               _vm._v(
                 "\n            " +
-                  _vm._s(habit.currentValue) +
-                  " " +
-                  _vm._s(habit.valueType) +
-                  " today\n        "
+                  _vm._s(_vm.currentHabitValue(habit)) +
+                  "\n        "
               )
             ])
           ]
@@ -3629,13 +3670,49 @@ var render = function() {
       }),
       _vm._v(" "),
       _vm.isModalActive
-        ? _c("modal", {
-            on: {
-              close: function($event) {
-                _vm.isModalActive = false
+        ? _c(
+            "modal",
+            {
+              on: {
+                close: function($event) {
+                  _vm.isModalActive = false
+                }
               }
-            }
-          })
+            },
+            [
+              _c("p", { attrs: { slot: "modal-title" }, slot: "modal-title" }, [
+                _vm._v(
+                  "\n            " +
+                    _vm._s(this.selectedHabit.name) +
+                    "\n        "
+                )
+              ]),
+              _vm._v(" "),
+              _c(
+                "p",
+                { attrs: { slot: "modal-subtitle" }, slot: "modal-subtitle" },
+                [
+                  _vm._v(
+                    "\n            " +
+                      _vm._s(_vm.currentHabitValue(this.selectedHabit)) +
+                      "\n        "
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "p",
+                { attrs: { slot: "modal-question" }, slot: "modal-question" },
+                [
+                  _vm._v(
+                    "\n            How many " +
+                      _vm._s(this.selectedHabit.valueType) +
+                      " would you like to\n            add?\n        "
+                  )
+                ]
+              )
+            ]
+          )
         : _vm._e()
     ],
     2
@@ -19025,17 +19102,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Tile_vue_vue_type_template_id_2618c299_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
-
-/***/ }),
-
-/***/ "./resources/js/event-bus.js":
-/*!***********************************!*\
-  !*** ./resources/js/event-bus.js ***!
-  \***********************************/
-/*! exports provided: EventBus */
-/***/ (function(module, exports) {
-
-throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nError: ENOENT: no such file or directory, open '/home/daan/dev/vuejs_playground/resources/js/event-bus.js'");
 
 /***/ }),
 

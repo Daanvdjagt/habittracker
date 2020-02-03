@@ -53,6 +53,10 @@ img {
   padding-top: 32px;
 }
 
+#modal-span {
+  padding-top: 16px;
+}
+
 /*! bulma.io v0.8.0 | MIT License | github.com/jgthms/bulma */
 
 @-webkit-keyframes spinAround {

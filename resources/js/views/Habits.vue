@@ -8,10 +8,22 @@
             <p slot="title">{{ habit.name }}</p>
             <p slot="subtitle">{{ habit.subtitle }}</p>
             <p slot="value">
-                {{ habit.currentValue }} {{ habit.valueType }} today
+                {{ currentHabitValue(habit) }}
             </p>
         </tile>
-        <modal v-if="isModalActive" @close="isModalActive = false"> </modal>
+        <modal v-if="isModalActive" @close="isModalActive = false">
+            <p slot="modal-title">
+                {{ this.selectedHabit.name }}
+            </p>
+            <p slot="modal-subtitle">
+                {{ currentHabitValue(this.selectedHabit) }}
+            </p>
+
+            <p slot="modal-question">
+                How many {{ this.selectedHabit.valueType }} would you like to
+                add?
+            </p>
+        </modal>
     </div>
 </template>
 
@@ -31,6 +43,16 @@ export default {
         updateSelectedHabit(habit) {
             this.selectedHabit = habit;
             console.log(this.selectedHabit);
+        },
+
+        currentHabitValue(habit) {
+            return (
+                "You have " +
+                habit.currentValue +
+                " " +
+                habit.valueType +
+                " today."
+            );
         }
     },
     mounted() {
