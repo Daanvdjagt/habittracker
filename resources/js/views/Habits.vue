@@ -65,6 +65,9 @@ export default {
                 +this.selectedHabit.currentValue + +value;
             this.selectedHabit = {};
         });
+        EventBus.$on("deleteHabit", value => {
+            // this.habits.splice(this.habits.indexOf(value), 1);
+        });
     },
     components: {
         Tile,

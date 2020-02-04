@@ -2019,6 +2019,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _event_bus__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../event-bus */ "./resources/js/event-bus.js");
 //
 //
 //
@@ -2044,10 +2045,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   methods: {
     emitsGlobalModalOpen: function emitsGlobalModalOpen() {
       this.$emit("open");
+    },
+    sendGlobalDelete: function sendGlobalDelete() {
+      _event_bus__WEBPACK_IMPORTED_MODULE_0__["EventBus"].$emit("deleteHabit");
     }
   }
 });
@@ -2155,6 +2163,10 @@ __webpack_require__.r(__webpack_exports__);
       _this.isModalActive = false;
       _this.selectedHabit.currentValue = +_this.selectedHabit.currentValue + +value;
       _this.selectedHabit = {};
+    });
+    _event_bus_js__WEBPACK_IMPORTED_MODULE_2__["EventBus"].$on("deleteHabit", function (value) {
+      // this.habits.splice(this.habits.indexOf(value), 1);
+      console.log(value);
     });
   },
   components: {
@@ -3559,22 +3571,30 @@ var render = function() {
             ])
           ]),
           _vm._v(" "),
-          _vm._m(0)
+          _c("p", { staticClass: "card-footer-item" }, [
+            _c("span", [
+              _vm._v(
+                "\n                        Remove this\n                        "
+              ),
+              _c(
+                "a",
+                {
+                  on: {
+                    click: function($event) {
+                      return _vm.sendGlobalDelete()
+                    }
+                  }
+                },
+                [_vm._v("habit")]
+              )
+            ])
+          ])
         ])
       ])
     ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("p", { staticClass: "card-footer-item" }, [
-      _c("span", [_vm._v(" Remove this "), _c("a", [_vm._v("habit")])])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
