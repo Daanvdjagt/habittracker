@@ -21,7 +21,7 @@
                         />
                         <div id="modal-span">
                             <span
-                                ><a @click="sendAndClose()"
+                                ><a @click="emitGlobalClose()"
                                     >Add progress</a
                                 ></span
                             >
@@ -39,10 +39,12 @@
 </template>
 
 <script>
+import { EventBus } from "../event-bus.js";
+
 export default {
     methods: {
-        sendAndClose() {
-            this.$emit("close", this.$refs.valueField.value);
+        emitGlobalClose() {
+            EventBus.$emit("closeModal", this.$refs.valueField.value);
         }
     }
 };

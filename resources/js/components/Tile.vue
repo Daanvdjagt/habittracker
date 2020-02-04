@@ -15,7 +15,7 @@
                         </span>
                     </p>
                     <p class="card-footer-item">
-                        <span> Remove this <a href="#">habit</a> </span>
+                        <span> Remove this <a>habit</a> </span>
                     </p>
                 </footer>
             </article>

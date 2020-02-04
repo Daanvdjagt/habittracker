@@ -1908,6 +1908,7 @@ module.exports = {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _event_bus_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../event-bus.js */ "./resources/js/event-bus.js");
 //
 //
 //
@@ -1948,10 +1949,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   methods: {
-    sendAndClose: function sendAndClose() {
-      this.$emit("close", this.$refs.valueField.value);
+    emitGlobalClose: function emitGlobalClose() {
+      _event_bus_js__WEBPACK_IMPORTED_MODULE_0__["EventBus"].$emit("closeModal", this.$refs.valueField.value);
     }
   }
 });
@@ -2094,6 +2096,7 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_Tile__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../components/Tile */ "./resources/js/components/Tile.vue");
 /* harmony import */ var _components_Modal__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/Modal */ "./resources/js/components/Modal.vue");
+/* harmony import */ var _event_bus_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../event-bus.js */ "./resources/js/event-bus.js");
 //
 //
 //
@@ -2123,6 +2126,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2146,6 +2150,11 @@ __webpack_require__.r(__webpack_exports__);
 
     window.axios.get("/habits").then(function (response) {
       return _this.habits = response.data;
+    });
+    _event_bus_js__WEBPACK_IMPORTED_MODULE_2__["EventBus"].$on("closeModal", function (value) {
+      _this.isModalActive = false;
+      _this.selectedHabit.currentValue = +_this.selectedHabit.currentValue + +value;
+      _this.selectedHabit = {};
     });
   },
   components: {
@@ -3416,7 +3425,7 @@ var render = function() {
                   {
                     on: {
                       click: function($event) {
-                        return _vm.sendAndClose()
+                        return _vm.emitGlobalClose()
                       }
                     }
                   },
@@ -3562,10 +3571,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("p", { staticClass: "card-footer-item" }, [
-      _c("span", [
-        _vm._v(" Remove this "),
-        _c("a", { attrs: { href: "#" } }, [_vm._v("habit")])
-      ])
+      _c("span", [_vm._v(" Remove this "), _c("a", [_vm._v("habit")])])
     ])
   }
 ]
@@ -19109,6 +19115,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Tile_vue_vue_type_template_id_2618c299_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
+
+/***/ }),
+
+/***/ "./resources/js/event-bus.js":
+/*!***********************************!*\
+  !*** ./resources/js/event-bus.js ***!
+  \***********************************/
+/*! exports provided: EventBus */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EventBus", function() { return EventBus; });
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
+
+var EventBus = new vue__WEBPACK_IMPORTED_MODULE_0___default.a();
 
 /***/ }),
 

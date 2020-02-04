@@ -30,6 +30,7 @@
 <script>
 import Tile from "../components/Tile";
 import Modal from "../components/Modal";
+import { EventBus } from "../event-bus.js";
 
 export default {
     data: function() {
@@ -58,6 +59,12 @@ export default {
         window.axios
             .get("/habits")
             .then(response => (this.habits = response.data));
+        EventBus.$on("closeModal", value => {
+            this.isModalActive = false;
+            this.selectedHabit.currentValue =
+                +this.selectedHabit.currentValue + +value;
+            this.selectedHabit = {};
+        });
     },
     components: {
         Tile,
