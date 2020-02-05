@@ -2055,7 +2055,7 @@ __webpack_require__.r(__webpack_exports__);
       this.$emit("open");
     },
     sendGlobalDelete: function sendGlobalDelete() {
-      _event_bus__WEBPACK_IMPORTED_MODULE_0__["EventBus"].$emit("deleteHabit");
+      this.$emit("deleteHabit");
     }
   }
 });
@@ -2134,6 +2134,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 
 
@@ -2146,8 +2147,13 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
-    updateSelectedHabit: function updateSelectedHabit(habit) {
+    updateSelectedHabit: function updateSelectedHabit(habit, shouldDelete) {
       this.selectedHabit = habit;
+
+      if (shouldDelete) {
+        console.log("Deleted BABYYYYYYY");
+        this.habits.splice(this.habits.indexOf(habit), 1);
+      }
     },
     currentHabitValue: function currentHabitValue(habit) {
       return "You have " + habit.currentValue + " " + habit.valueType + " today.";
@@ -2163,10 +2169,6 @@ __webpack_require__.r(__webpack_exports__);
       _this.isModalActive = false;
       _this.selectedHabit.currentValue = +_this.selectedHabit.currentValue + +value;
       _this.selectedHabit = {};
-    });
-    _event_bus_js__WEBPACK_IMPORTED_MODULE_2__["EventBus"].$on("deleteHabit", function (value) {
-      // this.habits.splice(this.habits.indexOf(value), 1);
-      console.log(value);
     });
   },
   components: {
@@ -3678,7 +3680,11 @@ var render = function() {
             key: habit.id,
             on: {
               open: function($event) {
-                ;(_vm.isModalActive = true), _vm.updateSelectedHabit(habit)
+                ;(_vm.isModalActive = true),
+                  _vm.updateSelectedHabit(habit, false)
+              },
+              deleteHabit: function($event) {
+                return _vm.updateSelectedHabit(habit, true)
               }
             }
           },

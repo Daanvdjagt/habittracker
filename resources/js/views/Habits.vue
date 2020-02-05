@@ -3,7 +3,8 @@
         <tile
             v-for="habit in habits"
             :key="habit.id"
-            @open="(isModalActive = true), updateSelectedHabit(habit)"
+            @open="(isModalActive = true), updateSelectedHabit(habit, false)"
+            @deleteHabit="updateSelectedHabit(habit, true)"
         >
             <p slot="title">{{ habit.name }}</p>
             <p slot="subtitle">{{ habit.subtitle }}</p>
@@ -41,10 +42,13 @@ export default {
         };
     },
     methods: {
-        updateSelectedHabit(habit) {
+        updateSelectedHabit(habit, shouldDelete) {
             this.selectedHabit = habit;
+            if (shouldDelete) {
+                console.log("Deleted BABYYYYYYY");
+                this.habits.splice(this.habits.indexOf(habit), 1);
+            }
         },
-
         currentHabitValue(habit) {
             return (
                 "You have " +
@@ -64,9 +68,6 @@ export default {
             this.selectedHabit.currentValue =
                 +this.selectedHabit.currentValue + +value;
             this.selectedHabit = {};
-        });
-        EventBus.$on("deleteHabit", value => {
-            // this.habits.splice(this.habits.indexOf(value), 1);
         });
     },
     components: {

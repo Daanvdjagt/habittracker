@@ -34,7 +34,7 @@ export default {
             this.$emit("open");
         },
         sendGlobalDelete() {
-            EventBus.$emit("deleteHabit");
+            this.$emit("deleteHabit");
         }
     }
 };
