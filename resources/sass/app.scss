@@ -1,1 +1,91 @@
-//
+@charset "utf-8";
+
+// Import a Google Font
+@import url("https://fonts.googleapis.com/css?family=Nunito:400,700");
+
+// Set your brand colors
+$purple: #8a4d76;
+$pink: #fa7c91;
+$brown: #757763;
+$beige-light: #d0d1cd;
+$beige-lighter: #eff0eb;
+
+// Update Bulma's global variables
+$family-sans-serif: "Nunito", sans-serif;
+$grey-dark: $brown;
+$grey-light: $beige-light;
+$primary: $purple;
+$link: $pink;
+$widescreen-enabled: false;
+$fullhd-enabled: false;
+
+// Update some of Bulma's component variables
+$body-background-color: $beige-lighter;
+$control-border-width: 2px;
+$input-border-color: transparent;
+$input-shadow: none;
+
+$info: $purple;
+
+.message {
+    padding: 16px;
+}
+
+.wrapper {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+@media (max-width: 900px) {
+    .wrapper {
+        grid-template-columns: 1fr;
+    }
+}
+
+.socials {
+    display: grid;
+    grid-template-areas:
+        "leftsocials rightsocials"
+        "leftsocials rightsocials";
+}
+
+.socials-left {
+    grid-area: leftsocials;
+}
+
+.socials-right {
+    grid-area: rightsocials;
+}
+
+.team-wrapper {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+@media (max-width: 900px) {
+    .team-wrapper {
+        grid-template-columns: 1fr;
+    }
+}
+
+.card-wrapper {
+    padding: 16px;
+}
+
+.card {
+    border-radius: 16px;
+}
+
+img {
+    border-radius: 8px;
+}
+
+.content {
+    padding-top: 32px;
+}
+
+#modal-span {
+    padding-top: 16px;
+}
+
+@import "./node_modules/bulma/bulma.sass";

@@ -1,12 +1,7 @@
-import Axios from "axios";
-import Vue from "vue";
+import "./bootstrap";
+import router from "./routes";
 
 new Vue({
     el: "#app",
-    data: {
-        message: "Hello world"
-    },
-    mounted() {
-        Axios.get("/skills").then(response => console.log(response.data));
-    }
+    router
 });
