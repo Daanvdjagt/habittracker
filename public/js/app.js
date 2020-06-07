@@ -2019,6 +2019,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _event_bus__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../event-bus */ "./resources/js/event-bus.js");
 //
 //
 //
@@ -2044,10 +2045,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   methods: {
     emitsGlobalModalOpen: function emitsGlobalModalOpen() {
       this.$emit("open");
+    },
+    sendGlobalDelete: function sendGlobalDelete() {
+      this.$emit("deleteHabit");
     }
   }
 });
@@ -2126,6 +2134,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 
 
@@ -2138,8 +2147,13 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
-    updateSelectedHabit: function updateSelectedHabit(habit) {
+    updateSelectedHabit: function updateSelectedHabit(habit, shouldDelete) {
       this.selectedHabit = habit;
+
+      if (shouldDelete) {
+        console.log("Deleted BABYYYYYYY");
+        this.habits.splice(this.habits.indexOf(habit), 1);
+      }
     },
     currentHabitValue: function currentHabitValue(habit) {
       return "You have " + habit.currentValue + " " + habit.valueType + " today.";
@@ -3559,22 +3573,30 @@ var render = function() {
             ])
           ]),
           _vm._v(" "),
-          _vm._m(0)
+          _c("p", { staticClass: "card-footer-item" }, [
+            _c("span", [
+              _vm._v(
+                "\n                        Remove this\n                        "
+              ),
+              _c(
+                "a",
+                {
+                  on: {
+                    click: function($event) {
+                      return _vm.sendGlobalDelete()
+                    }
+                  }
+                },
+                [_vm._v("habit")]
+              )
+            ])
+          ])
         ])
       ])
     ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("p", { staticClass: "card-footer-item" }, [
-      _c("span", [_vm._v(" Remove this "), _c("a", [_vm._v("habit")])])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -3658,7 +3680,11 @@ var render = function() {
             key: habit.id,
             on: {
               open: function($event) {
-                ;(_vm.isModalActive = true), _vm.updateSelectedHabit(habit)
+                ;(_vm.isModalActive = true),
+                  _vm.updateSelectedHabit(habit, false)
+              },
+              deleteHabit: function($event) {
+                return _vm.updateSelectedHabit(habit, true)
               }
             }
           },

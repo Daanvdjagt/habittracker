@@ -15,7 +15,10 @@
                         </span>
                     </p>
                     <p class="card-footer-item">
-                        <span> Remove this <a>habit</a> </span>
+                        <span>
+                            Remove this
+                            <a @click="sendGlobalDelete()">habit</a>
+                        </span>
                     </p>
                 </footer>
             </article>
@@ -24,10 +27,14 @@
 </template>
 
 <script>
+import { EventBus } from "../event-bus";
 export default {
     methods: {
         emitsGlobalModalOpen() {
             this.$emit("open");
+        },
+        sendGlobalDelete() {
+            this.$emit("deleteHabit");
         }
     }
 };
